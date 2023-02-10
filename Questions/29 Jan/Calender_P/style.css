@@ -1,0 +1,115 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0px;
+  padding: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  justify-content: center;
+  min-height: 100vh;
+  background:  rgb(26, 115, 167);
+}
+.wrapper{
+  width: 800px;
+  background:  rgb(16, 78, 115);
+  border-radius: 0px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+h1{
+    margin-top: 5px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+}
+
+.wrapper header{
+  display: flex;
+  align-items: center;
+  padding: 40px 160px 10px;
+  justify-content: space-between;
+}
+header .icons{
+  display: flex;
+  padding: 3px 10px 3px;
+}
+header .icons span{
+  height: 38px;
+  width: 60px;
+  margin: 0 40px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.icons span:last-child{
+  margin-right: -10px;
+}
+header .icons span:hover{
+  background:  rgb(28, 111, 162);
+}
+header .current-date{
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+}
+.calendar{
+  padding: 20px;
+}
+.calendar ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  text-align: center;
+}
+.calendar .days{
+  margin-bottom: 20px;
+}
+.calendar li{
+  color: rgb(255, 255, 255);
+  width: calc(100% / 7);
+  font-size: 1.07rem;
+}
+.calendar .weeks li{
+  font-weight: 500;
+  cursor: default;
+}
+.calendar .days li{
+  z-index: 1;
+  cursor: pointer;
+  position: relative;
+  margin-top: 30px;
+}
+.days li.inactive{
+  color: #aaa;
+}
+.days li.active{
+  color: rgb(101, 255, 95);
+}
+.days li::before{
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: 50%;
+  height: 40px;
+  width: 40px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.days li.active::before{
+  background: rgb(16, 78, 115);
+  
+}
+.days li:not(.active):hover::before{
+  background: #0f61a5;
+}
