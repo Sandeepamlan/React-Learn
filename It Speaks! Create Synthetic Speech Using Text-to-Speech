@@ -1,0 +1,5 @@
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Create%20Synthetic%20Speech%20Using%20quicklab/quicklabgsp222.sh
+
+sudo chmod +x quicklabgsp222.sh
+
+./quicklabgsp222.sh
