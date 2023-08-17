@@ -1,0 +1,9 @@
+export REGION=
+
+
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Creating%20PDFs%20with%20Go%20and%20Cloud%20Run/quicklabgsp762.sh
+
+
+sudo chmod +x quicklabgsp762.sh
+
+./quicklabgsp762.sh
