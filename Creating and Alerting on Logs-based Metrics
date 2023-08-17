@@ -1,0 +1,25 @@
+
+gcloud auth list
+gcloud config list project
+gcloud config set compute/zone us-east1-c
+
+export PROJECT_ID=$(gcloud info --format='value(config.project)')
+gcloud container clusters create gmp-cluster --num-nodes=1 --zone us-east1-c
+
+-----------------------------------------------
+
+gcloud container clusters list
+gcloud container clusters get-credentials gmp-cluster
+
+kubectl create ns gmp-test
+kubectl -n gmp-test apply -f https://storage.googleapis.com/spls/gsp091/gmp_flask_deployment.yaml
+kubectl -n gmp-test apply -f https://storage.googleapis.com/spls/gsp091/gmp_flask_service.yaml
+kubectl get services -n gmp-test
+
+
+curl $(kubectl get services -n gmp-test -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}')/metrics
+
+-----------------------------
+
+
+timeout 120 bash -c -- 'while true; do curl $(kubectl get services -n gmp-test -o jsonpath='{.items[*].status.loadBalancer.ingress[0].ip}')/error; sleep $((RANDOM % 4)) ; done'
