@@ -1,0 +1,6 @@
+
+
+
+gcloud compute instance-templates create autoscaling-instance01 --metadata=startup-script-url=gs://<bucket name>/startup.sh,gcs-bucket=gs://<bucket name>
+
+
