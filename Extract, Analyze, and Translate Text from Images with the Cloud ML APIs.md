@@ -7,12 +7,11 @@ export PROJECT_ID=
 gs://$PROJECT_ID/sign.jpg
 ```
 
-## Step-2
-## Cloud Storage  > Create Bucket Next next 
-## Uncheck Enforce and select fine graded and CREATE
-## Upload Image and give the Public Access Done
+## Step-2 Cloud Storage  > Create Bucket Next next 
+Uncheck Enforce and select fine graded and CREATE
+Upload Image and give the Public Access Done
 
-##Step 3 Edit the JSON File
+## Step 3 Edit the JSON File
 
 ```bash
 touch ocr-request.json
@@ -37,14 +36,14 @@ tee ocr-request.json <<EOF
 EOF
 ```
 
-##Step 4
+## Step 4
 
 ```bash
 curl -s -X POST -H "Content-Type: application/json" --data-binary @ocr-request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}
 curl -s -X POST -H "Content-Type: application/json" --data-binary @ocr-request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY} -o ocr-response.json
 ```
 
-##Step 5 
+## Step 5 
 
 ```bash
 touch translation-request.json
@@ -59,7 +58,7 @@ curl -s -X POST -H "Content-Type: application/json" --data-binary @translation-r
 cat translation-response.json
 ```
 
-##Step 6
+## Step 6
 
 ```bash
 touch nl-request.json.json
