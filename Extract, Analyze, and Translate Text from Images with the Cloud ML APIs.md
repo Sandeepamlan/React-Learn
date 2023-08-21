@@ -1,11 +1,20 @@
-gcloud alpha services api-keys create --display-name="CloudHustlers" 
-KEY_NAME=$(gcloud alpha services api-keys list --format="value(name)" --filter "displayName=CloudHustlers")
-API_KEY=$(gcloud alpha services api-keys get-key-string $KEY_NAME --format="value(keyString)")
-export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
-gsutil mb -p $PROJECT_ID -c regional -l us-central1 gs://$PROJECT_ID
-curl -O https://github.com/siddharth7000/practice/blob/main/sign.jpg
-gsutil cp sign.jpg gs://$PROJECT_ID/sign.jpg
-gsutil acl ch -u AllUsers:R gs://$PROJECT_ID/sign.jpg
+## Step-1
+
+```bash
+export API_KEY=<YOUR_API_KEY>
+export PROJECT_ID=
+
+gs://$PROJECT_ID/sign.jpg
+```
+
+## Step-2
+## Cloud Storage  > Create Bucket Next next 
+## Uncheck Enforce and select fine graded and CREATE
+## Upload Image and give the Public Access Done
+
+##Step 3 Edit the JSON File
+
+```bash
 touch ocr-request.json
 tee ocr-request.json <<EOF
 {
@@ -26,18 +35,33 @@ tee ocr-request.json <<EOF
   ]
 }
 EOF
+```
+
+##Step 4
+
+```bash
 curl -s -X POST -H "Content-Type: application/json" --data-binary @ocr-request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY}
 curl -s -X POST -H "Content-Type: application/json" --data-binary @ocr-request.json  https://vision.googleapis.com/v1/images:annotate?key=${API_KEY} -o ocr-response.json
+```
+
+##Step 5 
+
+```bash
 touch translation-request.json
 tee translation-request.json <<EOF
 {
-  "q": "My Name is CLOUDHUSTLER",	
+  "q": "your_text_here",
   "target": "en"
 }
 EOF
 STR=$(jq .responses[0].textAnnotations[0].description ocr-response.json) && STR="${STR//\"}" && sed -i "s|your_text_here|$STR|g" translation-request.json
 curl -s -X POST -H "Content-Type: application/json" --data-binary @translation-request.json https://translation.googleapis.com/language/translate/v2?key=${API_KEY} -o translation-response.json
 cat translation-response.json
+```
+
+##Step 6
+
+```bash
 touch nl-request.json.json
 tee nl-request.json <<EOF
 {
@@ -51,3 +75,7 @@ EOF
 STR=$(jq .data.translations[0].translatedText  translation-response.json) && STR="${STR//\"}" && sed -i "s|your_text_here|$STR|g" nl-request.json
 curl "https://language.googleapis.com/v1/documents:analyzeEntities?key=${API_KEY}" \
   -s -X POST -H "Content-Type: application/json" --data-binary @nl-request.json
+
+```
+
+
