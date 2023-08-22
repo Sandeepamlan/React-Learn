@@ -1,11 +1,12 @@
 ```
 export PROJECT_ID=
+export REGION=
 ```
 
 ## STep 1
 
 ```bash
-gcloud config set compute/region REGION
+gcloud config set compute/region $REGION
 mkdir gcf_hello_world
 cd gcf_hello_world
 touch index.js
