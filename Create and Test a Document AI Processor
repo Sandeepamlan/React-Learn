@@ -1,0 +1,8 @@
+export PROCESSOR_ID=
+
+
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Create%20and%20Test%20a%20Document%20AI%20Processor/quicklabgsp924.sh
+
+sudo chmod +x quicklabgsp924.sh
+
+./quicklabgsp924.sh
