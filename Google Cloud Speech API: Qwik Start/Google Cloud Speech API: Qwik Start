@@ -1,0 +1,4 @@
+export API_KEY=
+
+sudo chmod +x quicklabgsp119.sh
+./quicklabgsp119.sh 
