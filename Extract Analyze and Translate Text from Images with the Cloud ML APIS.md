@@ -1,3 +1,4 @@
+```
 export API_KEY=
 
 
@@ -6,3 +7,4 @@ curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Extract%20An
 sudo chmod +x quicklabgsp075.sh
 
 ./quicklabgsp075.sh
+```
