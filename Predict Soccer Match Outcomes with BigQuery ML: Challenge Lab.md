@@ -1,25 +1,14 @@
 ## Run in cloudshell
 ```cmd
 Events_Table_Name_cloudhustler=
-```
-```cmd
 Tags_Table_Name_cloudhustler=
-```
-```cmd
 Value1=
-```
-```cmd
 Value2=
-```
-```cmd
 Value3=
-```
-```cmd
 Value4=
-```
-```cmd
 Value5=
 ```
+
 ```cmd
 number=$(echo "$Events_Table_Name_cloudhustler" | tr -cd '0-9')
 Model_Name=soccer.xg_logistic_reg_model_$number
