@@ -1,3 +1,6 @@
+## Developing a REST API with Go and Cloud Run
+
+```
 gcloud auth list
 
 gcloud config list project
@@ -150,3 +153,5 @@ func getAmounts(ctx context.Context, c *Customer) (map[string]int64, error) {
   }
   return result, nil
 }
+
+```
